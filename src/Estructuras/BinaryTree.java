@@ -1,5 +1,7 @@
 package Estructuras;
 
+import java.util.Objects;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -134,6 +136,33 @@ public class BinaryTree<E> {
     public Node<E> getRoot() {
         return root;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.root);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj==null || !(obj instanceof BinaryTree)) 
+           return false;
+        BinaryTree<E> other = (BinaryTree<E>) obj;
+        Node<E> q=other.root;
+        Node<E> p=this.root;
+        if(q.getData().equals(p.getData()))
+            return true;
+        else if (p.getLeft() == null || p.getLeft().equals(q.getLeft())) {
+            return false;
+        }
+        else if (p.getRight() == null || p.getRight().equals(q.getRight())) {
+            return false;        
+        }
+        return true;
+    }
     
+    
+
         
 }
