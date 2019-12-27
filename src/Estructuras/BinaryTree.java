@@ -1,8 +1,6 @@
 package Estructuras;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.Objects;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -139,26 +137,33 @@ public class BinaryTree<E> {
     public Node<E> getRoot() {
         return root;
     }
-    
-    public void cargarDatosArbol(List<String[]> datos){
-        Stack<Node> pila= new Stack();
-        for (String[] s: datos){                    
-            if (s[0].equals("#R")){
-                Node<String> nResp= new Node(s[1]);
-                pila.add(nResp);
-            }else{
-                Node<String> nPreg= new Node(s[1]);
-                Node n= pila.pop();
-                Node n2= pila.pop();
-                nPreg.setRight(n);
-                nPreg.setLeft(n2);
-                pila.add(nPreg);                
-            }
-               
-        }
-        Node raiz= pila.pop();
-        this.root=raiz;
-        
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.root);
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj==null || !(obj instanceof BinaryTree)) 
+           return false;
+        BinaryTree<E> other = (BinaryTree<E>) obj;
+        Node<E> q=other.root;
+        Node<E> p=this.root;
+        if(q.getData().equals(p.getData()))
+            return true;
+        else if (p.getLeft() == null || p.getLeft().equals(q.getLeft())) {
+            return false;
+        }
+        else if (p.getRight() == null || p.getRight().equals(q.getRight())) {
+            return false;        
+        }
+        return true;
+    }
+    
+    
+
         
 }
