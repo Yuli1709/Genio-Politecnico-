@@ -1,5 +1,9 @@
 package Estructuras;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -21,6 +25,7 @@ public class BinaryTree<E> {
         return root==null;
     }
     
+     
     public boolean add(E child, E parent){
         Node<E> nch= new Node<>(child);
         if(child==null) return false;
@@ -135,5 +140,25 @@ public class BinaryTree<E> {
         return root;
     }
     
+    public void cargarDatosArbol(List<String[]> datos){
+        Stack<Node> pila= new Stack();
+        for (String[] s: datos){                    
+            if (s[0].equals("#R")){
+                Node<String> nResp= new Node(s[1]);
+                pila.add(nResp);
+            }else{
+                Node<String> nPreg= new Node(s[1]);
+                Node n= pila.pop();
+                Node n2= pila.pop();
+                nPreg.setRight(n);
+                nPreg.setLeft(n2);
+                pila.add(nPreg);                
+            }
+               
+        }
+        Node raiz= pila.pop();
+        this.root=raiz;
+        
+    }
         
 }

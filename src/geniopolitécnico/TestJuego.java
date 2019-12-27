@@ -35,11 +35,5 @@ public class TestJuego  extends Application{
     public static void main(String[] args) {
         launch(args);
     }
-    
-    public static void styleButton(Button btn){
-        btn.setMinHeight(25);
-        btn.setMinWidth(85);
-        btn.getStyleClass().add("myButton");
-    }
-    
+        
 }
