@@ -1,4 +1,8 @@
+#R gato
+#R conejo
 #R un perro
+#P ¿Tiene orejas Largas?
+#P ¿es un felino?
 #R una oveja
 #R un elefante
 #P ¿es un animal de granja?

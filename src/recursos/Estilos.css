@@ -8,22 +8,69 @@ and open the template in the editor.
     Author     : PC
 */
 
-.myButton{    
-     -fx-background-color: transparent;
-   -fx-font-size:1.5em;
- -fx-font-family: "Eras Medium ITC";
- -fx-padding:15px 20px;
- -fx-text-alignment: center;
- -fx-border-width: 2px; 
- -fx-border-color: cyan;
- -fx-text-fill:cyan;
- -fx-border-radius: 0%;
- -fx-padding:1em 1em 1em 1em;
+.myButton{
+    -fx-text-decoration: none;
+    -fx-padding: 4px;
+    -fx-font-weight: 600;
+    -fx-font-size: 20px;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #1883ba;
+    -fx-border-radius: 3px;
+    -fx-border-color: #1883ba;
 }
 
 .myButton:hover {
-      -fx-border-color: derive(cyan, -20%);
- -fx-text-fill:derive(cyan, -20%);
-  -fx-background-color: #041e5f;
+    -fx-cursor: hand;
+    -fx-text-fill:#1883ba;
+    -fx-background-color:ffffff;
 }
 
+.myButtonSi{
+    -fx-text-decoration: none;
+    -fx-padding: 4px;
+    -fx-font-weight: 600;
+    -fx-font-size: 20px;
+    -fx-text-fill: #ffffff;
+    -fx-background-color:#74fe97;
+    -fx-border-radius: 3px;
+    -fx-border-color: #74fe97;
+}
+
+.myButtonSi:hover {
+    -fx-cursor: hand;
+    -fx-text-fill:#1883ba;
+    -fx-background-color:#bdffce;
+}
+.myButtonNo{
+    -fx-text-decoration: none;
+    -fx-padding: 4px;
+    -fx-font-weight: 600;
+    -fx-font-size: 20px;
+    -fx-text-fill: #ffffff;
+    -fx-background-color:#ff6951;
+    -fx-border-radius: 3px;
+    -fx-border-color: #ff6951;
+}
+
+.myButtonNo:hover {
+    -fx-cursor: hand;
+    -fx-text-fill:#1883ba;
+    -fx-background-color:#ffb9ad;
+}
+
+.myButtonOk{
+    -fx-text-decoration: none;
+    -fx-padding: 4px;
+    -fx-font-weight: 600;
+    -fx-font-size: 20px;
+    -fx-text-fill: #ffffff;
+    -fx-background-color:#9f4ffd;
+    -fx-border-radius: 3px;
+    -fx-border-color: #9f4ffd;
+}
+
+.myButtonOk:hover {
+    -fx-cursor: hand;
+    -fx-text-fill:#1883ba;
+    -fx-background-color:#ebc2ff;
+}

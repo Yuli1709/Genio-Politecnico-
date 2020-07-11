@@ -46,5 +46,22 @@ public class Node<E> {
     public void setRight(Node<E> right) {
         this.right = right;
     }
+    
+    public boolean Replace(E pregunta,E nuevoanimal,boolean izq){ 
+        if(pregunta==null||nuevoanimal==null||this.data==null) return false;
+            E temp=this.getData();
+            this.setData(pregunta);
+            Node<E> vn= new Node<>(temp);
+            Node<E> nn= new Node<>(nuevoanimal);
+            if(izq){
+                this.setLeft(nn);
+                this.setRight(vn);
+            }
+            else{
+                this.setLeft(vn);
+                this.setRight(nn);
+            }                          
+        return false;
+    }
 
 }

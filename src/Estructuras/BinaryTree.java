@@ -1,11 +1,18 @@
 package Estructuras;
 
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /*
@@ -62,6 +69,49 @@ public class BinaryTree<E> {
             
         }
     }
+    
+    
+       
+    
+    public void GuardarArbol(){
+        try(BufferedWriter bw=new BufferedWriter(new FileWriter("src/recursos/datos-1.txt"))){
+            escribirPosOrden(bw);
+            
+        }catch(IOException ex){
+            System.out.println("No se pudo crear el archivo de clientes");
+        }
+    }
+    
+    public  void escribirPosOrden(BufferedWriter bw){
+        escribirPosOrden(root,bw);
+    }
+    private void escribirPosOrden(Node<E> n,BufferedWriter bw){
+        if(n!=null){
+            escribirPosOrden(n.getLeft(),bw);
+            escribirPosOrden(n.getRight(),bw);
+            if(n.getLeft()==null||n.getRight()==null){
+            try {
+                bw.write("#R "+(String) n.getData());
+                bw.newLine();
+            } catch (IOException ex) {
+                System.out.println("No se pudo crear el archivo del arbol");
+            }
+                
+            }else{
+                
+                try {
+                bw.write("#P "+(String) n.getData());
+                bw.newLine();
+            } catch (IOException ex) {
+                System.out.println("No se pudo crear el archivo del arbol");
+            }
+                
+            }
+            System.out.println(n.getData());
+            
+        }
+    }
+    
     
     public int height(){
         return height(root);
@@ -170,9 +220,35 @@ public class BinaryTree<E> {
     }
     
 
-    public void cargarDatosArbol(List<String[]> datos){
+    public void cargarDatosArbol(){
+        List<String[]> lista = new ArrayList<>();
+        try(BufferedReader br= new BufferedReader(new FileReader("src/recursos/datos-1.txt"))){
+            String linea;
+            while((linea=br.readLine())!=null){
+                String[] datos=linea.split(" ");
+                String string= new String();
+                for (int i=1;i<datos.length;i++){   
+                    if(i==datos.length-1)string=string+datos[i];
+                    else{
+                        string=string+datos[i]+" ";
+                    }
+                    
+                    
+                }
+                String[] lint= new String[2];
+                lint[0]=datos[0];
+                lint[1]=string;             
+                lista.add(lint);
+            }
+        }
+        catch(IOException ex){
+            System.err.println("No se pudo leer el archivo de clientes");
+        }
+        
+        
+        
         Stack<Node> pila= new Stack();
-        for (String[] s: datos){                    
+        for (String[] s: lista){                    
             if (s[0].equals("#R")){
                 Node<String> nResp= new Node(s[1]);
                 pila.add(nResp);
